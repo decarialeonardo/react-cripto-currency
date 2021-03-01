@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getAssets } from "../controllers/assets-ctrl";
+import { getAssets } from "./assets.controller";
 
 const assetsRouter: Router = Router();
 
-assetsRouter.get("/assets", getAssets);
+assetsRouter.get("/", getAssets);
 
 export default assetsRouter;

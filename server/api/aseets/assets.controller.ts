@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AssetsService } from "../services/assets.service";
+import { AssetsService } from "./assets.service";
 
 const assetsService = new AssetsService();
 
