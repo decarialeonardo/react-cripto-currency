@@ -15,3 +15,16 @@ export async function getAssets(
     next(new Error(`status: ${err.status} msg:${err.message}`));
   }
 }
+
+export async function getAssetById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const response = await assetsService.getAssetById(req.params.id);
+    return res.json(response.data);
+  } catch (err) {
+    next(new Error(`status: ${err.status} msg:${err.message}`));
+  }
+}
