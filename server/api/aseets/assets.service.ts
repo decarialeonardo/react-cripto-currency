@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { mockAssetById, mockAssets } from "./assetsMock";
+import { mockAssetById, mockAssets, mockAssetHistory } from "./assetsMock";
 
 const config = {
   baseUrl: "https://api.coincap.io/v2",
@@ -19,7 +19,12 @@ export class AssetsService {
   }
 
   getAssetById(id): Promise<any> {
-    // return this.http.get(`${config.baseUrl}/assets`);
+    // return this.http.get(`${config.baseUrl}/assets/${id}`);
     return Promise.resolve(mockAssetById);
+  }
+
+  getAssetHistory(id, interval): Promise<any> {
+    // return this.http.get(`${config.baseUrl}/assets/${id}/history?interval=${interval}`);
+    return Promise.resolve(mockAssetHistory);
   }
 }
