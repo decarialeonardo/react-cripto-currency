@@ -31,8 +31,18 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 const Wrapper = styled.div`
-    padding: 0 40px 40px 40px;
+    padding: 0 150px 150px 150px;
 `
+
+const CoinSymbol = styled.div`
+    display: inline-block;
+    vertical-align: 'middle';
+`
+const CoinSymbolTitle = styled.p`
+    font-size: 0.8em; 
+    opacity: 0.7;"
+`
+
 
 const classes = makeStyles({
     table: {
@@ -81,11 +91,15 @@ class AssetsList extends Component {
                         {assets.map((asset) => (
                             <StyledTableRow  key={asset.id}>
                                 <StyledTableCell  style={{cursor: 'pointer'}} component="th" scope="row">
-                                <Link to={`${asset.id}`} className="nav-link">
-                                    {asset.name} 
-                                </Link>
+                                    <img src={`https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`} class="" />
+                                    <CoinSymbol>
+                                        <Link to={`${asset.id}`} className="nav-link">
+                                            {asset.name}
+                                            <CoinSymbolTitle>{asset.symbol}</CoinSymbolTitle>
+                                        </Link>
+                                    </CoinSymbol>
                                 </StyledTableCell>
-                                <StyledTableCell align="right">{asset.priceUsd}</StyledTableCell>
+                                <StyledTableCell align="right">${Math.round(asset.priceUsd * 100) / 100 }</StyledTableCell>
                                 <StyledTableCell align="right">{asset.changePercent24Hr}</StyledTableCell>
                                 <StyledTableCell align="right">{asset.marketCapUsd}</StyledTableCell>
                                 <StyledTableCell align="right">{asset.volumeUsd24Hr}</StyledTableCell>
