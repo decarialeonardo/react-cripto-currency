@@ -44,6 +44,7 @@ const classes = makeStyles({
     },
 });
 class AssetsList extends Component {
+    ws = new WebSocket('wss://ws.coincap.io/prices?assets=ALL')
     constructor(props) {
         super(props)
         this.state = {
@@ -61,6 +62,24 @@ class AssetsList extends Component {
                 isLoading: false,
             })
         })
+
+        this.ws.onopen = () => {
+            // on connecting, do nothing but log it to the console
+            console.log('connected')
+            }
+    
+            this.ws.onmessage = evt => {
+            // listen to data sent from the websocket server
+            const assetsChanged = JSON.parse(evt.data);
+            //this.setState({dataFromServer: message})
+            console.log(assetsChanged)
+            }
+    
+            this.ws.onclose = () => {
+            console.log('disconnected')
+            // automatically try to reconnect on connection loss
+    
+            }
     }
 
     handleCellClick(assetId) {

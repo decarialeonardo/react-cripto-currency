@@ -1,0 +1,22 @@
+@-webkit-keyframes blackWhite {  
+    0% { background-color: inherit; }
+    50% { background-color: inherit; }
+    51% { background-color: green; }
+    100% { background-color: green; }
+  }
+  
+  @-webkit-keyframes blackWhiteFade {  
+    0% { background-color: inherit; }
+    50% { background-color: green; }
+    100% { background-color: inherit; }
+  }
+  
+  .blinkdiv {
+      height: 100px;
+      background-color: green;
+      opacity: 0.5;
+    -webkit-animation-name: blackWhite;
+    /* -webkit-animation-name: blackWhiteFade; */
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 4s; 
+  }   
